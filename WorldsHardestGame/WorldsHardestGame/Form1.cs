@@ -42,5 +42,13 @@ namespace WorldsHardestGame
                 "{0}. generáció",
                 generation);
         }
+
+        private void Ratermettseg()
+        {
+            var playerList = from p in gc.GetCurrentPlayers()
+                             orderby p.GetFitness() descending
+                             select p;
+            var topPerformers = playerList.Take(populationSize / 2).ToList();
+        }
     }
 }
